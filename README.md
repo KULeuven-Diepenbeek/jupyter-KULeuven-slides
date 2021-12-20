@@ -14,11 +14,11 @@ This will make the template "KULeuven" available in the python environment.
 
 First mark, using the tags menus, the start of each slide.
 
-![](https://github.com/KULeuven-Diepenbeek/jupyter-KULeuven-slides/blob/master/screenshots/ScreenshotSlideTypeSelection.png)
+![](/screenshots/ScreenshotSlideTypeSelection.png)
 
 Using the jupyterlab menus: please select :"File -> Download as" -> "KULeuven"
 
-![](https://github.com/KULeuven-Diepenbeek/jupyter-KULeuven-slides/blob/master/screenshots/ScreenshotSlideExport.png)
+![](/screenshots/ScreenshotSlideExport.png)
 
 Once installed, convert Jupyter notebooks into templated KULeuven slides by running:
 
@@ -34,13 +34,13 @@ jupyter nbconvert --to KULeuven --no-prompt --no-input --output-dir=_build/html/
 
 It is good to add a title slide, by adding the notebook metadata:
 
-![](https://github.com/KULeuven-Diepenbeek/jupyter-KULeuven-slides/blob/master/screenshots/ScreenshotNotebookMetadata.png)
+![](/screenshots/ScreenshotNotebookMetadata.png)
 
 Please do not forget to commit changes after adding metadata. (The small **v** on top of the box).
 
 ## Advanced usage
 
-![](https://github.com/KULeuven-Diepenbeek/jupyter-KULeuven-slides/blob/master/screenshots/ScreenshotCellMetadata.png)
+![](/screenshots/ScreenshotCellMetadata.png)
 
 Please do not forget to commit changes after adding metadata. (The small **v** on top of the box).
 
