@@ -3,8 +3,6 @@
 {% from 'jupyter_widgets.html.j2' import jupyter_widgets %}
 
 {% set reveal_url_prefix = resources.reveal.url_prefix | default('https://unpkg.com/reveal.js@4.0.2', true) %}
-{% set reveal_transition = resources.reveal.transition | default('slide', true) %}
-{% set reveal_number = resources.reveal.number | default('', true) %}
 {% set reveal_scroll = resources.reveal.scroll | default(false, true) | json_dumps %}
 
 {%- block header -%}
@@ -197,21 +195,46 @@ a.anchor-link {
 <div class="slides">
 
   {%- if "KULeuvenSlides" in nb.metadata -%}
-  <section class='kuleuven_title_slide kuleuven'><section>
+  <section class='kuleuven_title_slide reveal'><section>
   {%- if "title" in nb.metadata.KULeuvenSlides -%}
     <h1 class="title">{{ nb.metadata.KULeuvenSlides.title }}</h1>
   {%- endif -%}
   {%- if "subtitle" in nb.metadata.KULeuvenSlides -%}
     <h2 class="subtitle">{{ nb.metadata.KULeuvenSlides.subtitle }}</h2>
   {%- endif -%}
+  {%- if "kuleuven_presentation_style" in nb.metadata.KULeuvenSlides -%}
+  {%- if nb.metadata.KULeuvenSlides.kuleuven_presentation_style=="Normal" -%}
   {%- if "authors" in nb.metadata.KULeuvenSlides -%}
-    <div class="speaker">{{ nb.metadata.KULeuvenSlides.authors }}</div>
+    <div class="speaker kuleuvenblue" >{{ nb.metadata.KULeuvenSlides.authors }}</div>
   {%- endif -%}
   {%- if "location" in nb.metadata.KULeuvenSlides -%}
-    <div class="location">{{ nb.metadata.KULeuvenSlides.location }}</div>
+    <div class="location kuleuvenblue" >{{ nb.metadata.KULeuvenSlides.location }}</div>
   {%- endif -%}
   {%- if "date" in nb.metadata.KULeuvenSlides -%}
-    <div class="date">{{ nb.metadata.KULeuvenSlides.date }}</div>
+    <div class="date kuleuvenblue" >{{ nb.metadata.KULeuvenSlides.date }}</div>
+  {%- endif -%}
+  {%- else -%}
+  {%- if "authors" in nb.metadata.KULeuvenSlides -%}
+   <div class="speaker" >{{ nb.metadata.KULeuvenSlides.authors }}</div>
+  {%- endif -%}
+  {%- if "location" in nb.metadata.KULeuvenSlides -%}
+    <div class="location" >{{ nb.metadata.KULeuvenSlides.location }}</div>
+  {%- endif -%}
+  {%- if "date" in nb.metadata.KULeuvenSlides -%}
+    <div class="date" >{{ nb.metadata.KULeuvenSlides.date }}</div>
+  {%- endif -%}
+  
+  {%- endif -%}
+  {%- else -%}
+  {%- if "authors" in nb.metadata.KULeuvenSlides -%}
+   <div class="speaker kuleuvenblue" >{{ nb.metadata.KULeuvenSlides.authors }}</div>
+  {%- endif -%}
+  {%- if "location" in nb.metadata.KULeuvenSlides -%}
+    <div class="location kuleuvenblue" >{{ nb.metadata.KULeuvenSlides.location }}</div>
+  {%- endif -%}
+  {%- if "date" in nb.metadata.KULeuvenSlides -%}
+    <div class="date kuleuvenblue" >{{ nb.metadata.KULeuvenSlides.date }}</div>
+  {%- endif -%}
   {%- endif -%}
   </section></section>
   {%- endif -%}
@@ -242,14 +265,14 @@ require(
     ],
 
     function(Reveal, RevealNotes){
-        // Full list of configuration options available here: https://github.com/hakimel/reveal.js#configuration
+        // Full list of configuration options available here: https://revealjs.com/config/
         Reveal.initialize({
             controls: true,
             progress: true,
             history: true,
             disableLayout: true,
-            transition: "{{reveal_transition}}",
-            slideNumber: "{{reveal_number}}",
+            transition: "slide",
+            slideNumber: "c/t",
             plugins: [RevealNotes]
         });
 
