@@ -28,7 +28,7 @@ class KULeuvenExporter(SlidesExporter):
         resources['sedes-sde-img'] = encode_image(os.path.join(self.template_dir, 'sedes-sde.png'))
         resources['sedes-img'] = encode_image(os.path.join(self.template_dir, 'sedes.png'))
         resources['sleutel-img'] = encode_image(os.path.join(self.template_dir, 'sleutel.png'))
-        resources['kul-img'] = encode_image(os.path.join(self.template_dir, 'kul.png'))
+        resources['kul-img'] = encode_image(os.path.join(self.template_dir, 'KUL.png'))
         resources['KULeuven-img'] = encode_image(os.path.join(self.template_dir, 'KULeuven.png'))
         
         return resources
