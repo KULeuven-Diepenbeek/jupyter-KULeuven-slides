@@ -2,7 +2,7 @@
 {% from 'mathjax.html.j2' import mathjax %}
 {% from 'jupyter_widgets.html.j2' import jupyter_widgets %}
 
-{% set reveal_url_prefix = resources.reveal.url_prefix | default('https://unpkg.com/reveal.js@4.0.2', true) %}
+{% set reveal_url_prefix = resources.reveal.url_prefix | default('https://unpkg.com/reveal.js@4.3.1', true) %}
 {% set reveal_scroll = resources.reveal.scroll | default(false, true) | json_dumps %}
 
 {%- block header -%}
@@ -84,7 +84,6 @@ a.anchor-link {
 }
 </style>
 
-{{ resources.include_css("static/custom_reveal.css") }}
 {{ resources.include_css("KULeuven.css") }}
 <style type="text/css">
 
@@ -185,12 +184,8 @@ a.anchor-link {
 </head>
 {% endblock header%}
 
-{% block body_header %}
-{% if resources.theme == 'dark' %}
-<body class="jp-Notebook" data-jp-theme-light="false" data-jp-theme-name="JupyterLab Dark">
-{% else %}
+{%- block body_header -%}
 <body class="jp-Notebook" data-jp-theme-light="true" data-jp-theme-name="JupyterLab Light">
-{% endif %}
 <div class="reveal">
 <div class="slides">
 
@@ -239,7 +234,7 @@ a.anchor-link {
   </section></section>
   {%- endif -%}
 
-{% endblock body_header %}
+{%- endblock body_header -%}
 
 {% block body_footer %}
 </div>
@@ -265,12 +260,12 @@ require(
     ],
 
     function(Reveal, RevealNotes){
-        // Full list of configuration options available here: https://revealjs.com/config/
+        // Full list of configuration options available here: https://revealjs.com/config/  
         Reveal.initialize({
             controls: true,
             progress: true,
-            history: true,
-            disableLayout: true,
+            hash: true,
+            disableLayout: true, 
             transition: "slide",
             slideNumber: "c/t",
             plugins: [RevealNotes]
@@ -284,7 +279,7 @@ require(
 
         Reveal.addEventListener('slidechanged', update);
 
-        function setScrollingSlide() {
+        function setScrollingSlide() {  //JG:Scroll parameter(begin) lijkt niet doorgegeven ==> niet gebruikt
             var scroll = {{ reveal_scroll }}
             if (scroll === true) {
               var h = $('.reveal').height() * 0.95;

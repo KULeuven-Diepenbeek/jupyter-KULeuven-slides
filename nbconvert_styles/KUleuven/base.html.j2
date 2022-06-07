@@ -30,6 +30,11 @@
 </aside>
 {%- elif cell.metadata.slide_type == 'skip' -%}
 {%- else -%}
+{%- if "KULeuvenSlides" in cell.metadata -%}
+{%- if "slide_title" in cell.metadata.KULeuvenSlides -%}
+<h3>{{ cell.metadata.KULeuvenSlides.slide_title }}</h3>
+{%- endif -%}
+{%- endif -%}
 {{ super() }}
 {%- endif -%}
 
