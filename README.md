@@ -80,13 +80,13 @@ Please do not forget to commit changes after adding metadata. (The small **v** o
 
 # Adding a structure slide in the presentation, using a different template
 
-A structure slide, typically for the outline of the presentation, can be added at any point in the presentation by adding to the cell metadata under ```slideshow```:
+A structure slide, typically for the outline of the presentation, can be added at any point in the presentation by adding to the cell metadata under ```KULeuvenSlides```:
 ```
-"slideshow": {
+"KULeuvenSlides": {
         "slide_code": "structure"
     },
 ```
-(typically there will be already the ``slide_type``` present in this section)
+(typically there will be already the ```slide_type``` present in this section)
 ![cell metadata](assets/images/ScreenshotCellMetadata.png)
 
 Please do not forget to commit changes after adding metadata. (The small **v** on top of the box).

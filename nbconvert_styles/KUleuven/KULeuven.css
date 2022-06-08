@@ -78,8 +78,8 @@ div.jp-InputArea-editor {
 .reveal img,
 .reveal video,
 .reveal iframe {
-  max-width: 95%;
-  max-height: 95%; }
+  max-width: 85vw;
+  max-height: 85vh; }
 
 .reveal strong,
 .reveal b {
@@ -213,7 +213,7 @@ div.jp-InputArea-editor {
   vertical-align: top; }
 
 .reveal img {
-  margin: 20px 0; }
+  margin: 0.4vh 0; }
 
 /*********************************************
  * LINKS
@@ -409,10 +409,10 @@ div.jp-OutputPrompt {
 .reveal h4,
 .reveal h5,
 .reveal h6 {
-  margin: 0 0 20px 0;
+  margin: 0 0 0.2vh 0;
   font-family: "Ubuntu", sans-serif;
   font-weight: 600;
-  line-height: 1.2;
+  line-height: 1.0;
   letter-spacing: normal;
   text-transform: uppercase;
   text-shadow: none;
@@ -433,20 +433,18 @@ div.jp-OutputPrompt {
 .kuleuven_structure_slide h6 {color: #00407A;} 
 
 .reveal h1 {
-  font-size: 2em; }
+  font-size: 10vh; 
+  text-shadow: none; }
 
 .reveal h2 {
-  font-size: 1.5em; }
+  font-size: 8vh; }
 
 .reveal h3 {
-  font-size: 1.15em; }
+  font-size: 5vh; }
 
 .reveal h4 {
-  font-size: 1em; }
+  font-size: 4vh; }
 
-.reveal h1 {
-  text-shadow: none; }
-  
 /* Remove trailing margins after titles */
 .reveal h1:last-child,
 .reveal h2:last-child,
@@ -461,15 +459,13 @@ div.jp-OutputPrompt {
   line-height: 1.3; }
   
 .jp-RenderedSVG svg {
-  float: centre;
   width: auto;
   height: 85vh;
 }
 
 .jp-RenderedImage img {  
-  float: centre;
   width: auto;
-  height: 85vh;
+  height: 70vh;
 }
 
 .csl-bib-body {float: left}

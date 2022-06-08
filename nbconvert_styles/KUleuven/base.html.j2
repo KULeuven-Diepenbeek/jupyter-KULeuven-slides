@@ -1,33 +1,36 @@
 {%- extends 'lab/base.html.j2' -%}
-
 {%- block any_cell scoped -%}
 
 {%- if cell.metadata.get('slide_start', False) -%}
-
-{%- if "slide_code" in cell.metadata.slideshow -%}
-{%- if cell.metadata.slideshow.slide_code == "title" -%}
-<section class="kuleuven_title_slide reveal">
-{%- elif cell.metadata.slideshow.slide_code == "structure" -%}
-<section class="kuleuven_structure_slide reveal">
-{%- else -%}
-<section class="kuleuven_slide reveal">
-{%- endif -%}
-{%- else -%}
-<section class="kuleuven_slide reveal">
-{%- endif -%}
+	{%- if "KULeuvenSlides" in cell.metadata -%}
+		{%- if "slide_code" in cell.metadata.KULeuvenSlides -%}
+			 {%- if cell.metadata.KULeuvenSlides.slide_code == "title" -%}
+			   <section class="kuleuven_title_slide reveal">
+			 {%- elif cell.metadata.KULeuvenSlides.slide_code == "structure" -%}
+			   <section class="kuleuven_structure_slide reveal">
+			 {%- else -%}
+			   <section class="kuleuven_slide reveal">
+			 {%- endif -%}
+		{%- else -%}
+		<section class="kuleuven_slide reveal">
+		{%- endif -%}
+	{%- else -%}
+	<section class="kuleuven_slide reveal">
+	{%- endif -%}
 {%- endif -%}
 
 {%- if cell.metadata.get('subslide_start', False) -%}
-<section>
+  <section>
 {%- endif -%}
+
 {%- if cell.metadata.get('fragment_start', False) -%}
-<div class="fragment">
+  <div class="fragment">
 {%- endif -%}
 
 {%- if cell.metadata.slide_type == 'notes' -%}
-<aside class="notes">
-{{ super() }}
-</aside>
+ <aside class="notes">
+ {{ super() }}
+ </aside>
 {%- elif cell.metadata.slide_type == 'skip' -%}
 {%- else -%}
 {%- if "KULeuvenSlides" in cell.metadata -%}
