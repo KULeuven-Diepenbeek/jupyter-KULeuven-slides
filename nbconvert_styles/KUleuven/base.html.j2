@@ -5,17 +5,17 @@
 	{%- if "KULeuvenSlides" in cell.metadata -%}
 		{%- if "slide_code" in cell.metadata.KULeuvenSlides -%}
 			 {%- if cell.metadata.KULeuvenSlides.slide_code == "title" -%}
-			   <section class="kuleuven_title_slide reveal">
+			   <section data-state="kuleuven_title_slide">
 			 {%- elif cell.metadata.KULeuvenSlides.slide_code == "structure" -%}
-			   <section class="kuleuven_structure_slide reveal">
+			   <section data-state="kuleuven_structure_slide">
 			 {%- else -%}
-			   <section class="kuleuven_slide reveal">
+			   <section data-state="kuleuven_slide">
 			 {%- endif -%}
 		{%- else -%}
-		<section class="kuleuven_slide reveal">
+		<section data-state="kuleuven_slide">
 		{%- endif -%}
 	{%- else -%}
-	<section class="kuleuven_slide reveal">
+	<section data-state="kuleuven_slide">
 	{%- endif -%}
 {%- endif -%}
 
@@ -35,7 +35,7 @@
 {%- else -%}
 {%- if "KULeuvenSlides" in cell.metadata -%}
 {%- if "slide_title" in cell.metadata.KULeuvenSlides -%}
-<h3>{{ cell.metadata.KULeuvenSlides.slide_title }}</h3>
+<h6>{{ cell.metadata.KULeuvenSlides.slide_title }}</h6>
 {%- endif -%}
 {%- endif -%}
 {{ super() }}

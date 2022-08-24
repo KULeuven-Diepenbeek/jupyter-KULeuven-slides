@@ -36,6 +36,27 @@ section.has-dark-background, section.has-dark-background h1, section.has-dark-ba
   --r-selection-background-color: rgba(0, 0, 0, 0.99);
 --r-selection-color: #fff;}
 
+a.anchor-link {
+   display: none;
+}
+.highlight  {
+    margin: 0.4em;
+}
+.jp-Notebook {
+    padding: 0;
+}
+:root {
+    --jp-ui-font-size1: 20px;       /* instead of 14px */
+    --jp-content-font-size1: 20px;  /* instead of 14px */
+    --jp-code-font-size: 19px;      /* instead of 13px */
+    --jp-cell-prompt-width: 110px;  /* instead of 64px */
+}
+@media print {
+  body {
+    margin: 0;
+  }
+}
+
 .reveal-viewport {
   background: #fff;
   background-color: #fff; }
@@ -73,7 +94,6 @@ div.jp-InputArea-editor {
   padding: 0.06em;
 }
 
-
 /* Ensure certain elements are never larger than the slide itself */
 .reveal img,
 .reveal video,
@@ -84,7 +104,6 @@ div.jp-InputArea-editor {
 .reveal strong,
 .reveal b {
   font-weight: bold; }
-
 .reveal em {
   font-style: italic; }
 
@@ -94,16 +113,12 @@ div.jp-InputArea-editor {
   display: inline-block;
   text-align: left;
   margin: 0 0 0 1em; }
-
 .reveal ol {
   list-style-type: decimal; }
-
 .reveal ul {
   list-style-type: disc; }
-
 .reveal ul ul {
   list-style-type: square; }
-
 .reveal ul ul ul {
   list-style-type: circle; }
 
@@ -113,10 +128,8 @@ div.jp-InputArea-editor {
 .reveal ol ul {
   display: block;
   margin-left: 40px; }
-
 .reveal dt {
   font-weight: bold; }
-
 .reveal dd {
   margin-left: 40px; }
 
@@ -129,11 +142,9 @@ div.jp-InputArea-editor {
   font-style: italic;
   background: rgba(255, 255, 255, 0.05);
   box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.2); }
-
 .reveal blockquote p:first-child,
 .reveal blockquote p:last-child {
   display: inline-block; }
-
 .reveal q {
   font-style: italic; }
 
@@ -149,22 +160,18 @@ div.jp-InputArea-editor {
   line-height: 1.2em;
   word-wrap: break-word;
   box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.15); }
-
 .reveal code {
   font-family: monospace;
   text-transform: none;
   tab-size: 2;  }
-
 .reveal pre code {
   display: block;
   padding: 0px;
   overflow: auto;
   max-height: 400px;
   word-wrap: normal; }
-
 .reveal .code-wrapper {
   white-space: normal;}
-
 .reveal .code-wrapper code {
   white-space: pre;}
 
@@ -173,47 +180,37 @@ div.jp-InputArea-editor {
   margin: auto;
   border-collapse: collapse;
   border-spacing: 0; }
-
 .reveal table th {
   font-weight: bold; }
-
 .reveal table th,
 .reveal table td {
   text-align: left;
   padding: 0.2em 0.5em 0.2em 0.5em;
   border-bottom: 1px solid; }
-
 .reveal table th[align="center"],
 .reveal table td[align="center"] {
   text-align: center; }
-
 .reveal table th[align="right"],
 .reveal table td[align="right"] {
   text-align: right; }
-
 .reveal table tbody tr:last-child th,
 .reveal table tbody tr:last-child td {
   border-bottom: none; }
-
 .reveal sup {
   vertical-align: super;
   font-size: smaller; }
-
 .reveal sub {
   vertical-align: sub;
   font-size: smaller; }
-
 .reveal small {
   display: inline-block;
   font-size: 0.6em;
   line-height: 1.2em;
   vertical-align: top; }
-
 .reveal small * {
   vertical-align: top; }
-
 .reveal img {
-  margin: 0.4vh 0; }
+  margin: 0.2vh 0; }
 
 /*********************************************
  * LINKS
@@ -222,12 +219,10 @@ div.jp-InputArea-editor {
   color: #00008B;
   text-decoration: none;
   transition: color .15s ease; }
-
 .reveal a:hover {
   color: #0000f1;
   text-shadow: none;
   border: none; }
-
 .reveal .roll span:after {
   color: #fff;
   background: #00003f; }
@@ -238,10 +233,8 @@ div.jp-InputArea-editor {
 .reveal .r-frame {
   border: 4px solid #000;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.15); }
-
 .reveal a .r-frame {
   transition: all .15s linear; }
-
 .reveal a:hover .r-frame {
   border-color: #00008B;
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.55); }
@@ -249,9 +242,6 @@ div.jp-InputArea-editor {
 /*********************************************
  * NAVIGATION CONTROLS
  *********************************************/
- 
-/* Reveal navigation controls */
-
 .reveal .controls .navigate-left,
 .reveal .controls .navigate-left.enabled {
   border-right-color: #727272;
@@ -284,29 +274,24 @@ div.jp-InputArea-editor {
 .reveal .controls .navigate-down.enabled.enabled:hover {
   border-top-color: #dfdfdf;
 }
-
- 
 .reveal .controls {
   color: #00407A;}
 .reveal .controls button {
   color: #00407A; }
+
 /*********************************************
  * PROGRESS BAR
  *********************************************/
- 
  .reveal .progress span {
   background: #727272;
 }
 
- 
 .reveal .progress {
   position: static;
   background: rgba(0, 0, 0, 0.2);
   color: #10637D; }
   
-
 /* Scrollbars */
-
 ::-webkit-scrollbar {
   width: 6px;
   height: 6px;
@@ -316,9 +301,7 @@ div.jp-InputArea-editor {
 }
 ::-webkit-scrollbar-thumb {
   background: #727272 !important;
-}
-  
-  
+} 
   
 /*********************************************
  * PRINT BACKGROUND
@@ -331,19 +314,12 @@ div.jp-InputArea-editor {
 .kuleuven_slide {color: #2F4D5D;}
 
 .reveal .slide-number {
-  font-size: 0.4em;
-  left: 44px;
-  bottom: 1em;
+  font-size: 2vh;
+  left: 4vh;
+  height: 3vh;
+  bottom: 1vh;
   color: #fff;
   background-color: transparent; }
-
-.reveal .title {color: #fff;
-  padding-top: 12%;
-  width: 1024px; }
-
-.reveal .subtitle {color: #fff;
-  padding-top: 2%; 
-  width: 1024px; }
 
 
 div.jp-InputArea-editor {
@@ -381,23 +357,48 @@ div.jp-OutputPrompt {
   box-shadow: none;
 }
 
+.reveal .title {color: #fff;
+  position: fixed;
+  top: 22vh;
+  height: 20 vh;
+  width: 75vw; 
+  font-size: 11vh;
+  }
+.reveal .subtitle {color: #fff;
+  position: fixed;
+  top: 45vh; 
+  height: 15vh;
+  width: 75vw;
+  font-size: 5vh;
+  }
 .reveal div .speaker {
-  padding-top: 15%;
-  font-size: 1.1em;
+  position: fixed;
+  top: 70vh;
+  height: 5 vh;
+  width: 100vw;
+  font-size: 3vh;
   text-transform: uppercase;
     }
-
 .reveal div .location {
-  padding-top: 1%;
-  font-size: 0.8em;
+  position: fixed;
+  top: 76vh;
+  height: 5 vh;
+  width: 100vw;
+  font-size: 2vh;
    }
-
 .reveal div .date {
-  font-size: 0.8em; 
+  position: fixed;
+  top: 82vh;
+  height: 5 vh;
+  width: 100vw;
+  font-size: 2vh; 
   }
   
-.reveal div .kuleuvenblue {
+.reveal div .kuleuvenblue{
   color: #1D8DB0;
+  }
+.reveal div .kuleuvenwhite{
+  color: #fff;
   }
 
 .reveal ul {
@@ -444,6 +445,11 @@ div.jp-OutputPrompt {
 
 .reveal h4 {
   font-size: 4vh; }
+  
+.reveal h6 {
+  top: 0vh;
+  font-size: 5vh; 
+  height: 9vh;}
 
 /* Remove trailing margins after titles */
 .reveal h1:last-child,
@@ -454,20 +460,25 @@ div.jp-OutputPrompt {
 .reveal h6:last-child {
   margin-bottom: 0;
 }
+
 .reveal p {
   margin: 20px 0;
   line-height: 1.3; }
   
 .jp-RenderedSVG svg {
+  top: 9vh;
   width: auto;
-  height: 85vh;
+  height: 70vh;
+  object-fit: contain;
 }
 
 .jp-RenderedImage img {  
+  top: 9vh;
   width: auto;
   height: 70vh;
+  object-fit: contain;
 }
 
-.csl-bib-body {float: left}
+.div csl-bib-body {text-align: left}  /* aan te passen */
 
  
