@@ -321,7 +321,6 @@ div.jp-InputArea-editor {
   color: #fff;
   background-color: transparent; }
 
-
 div.jp-InputArea-editor {
   padding: 0.06em;
 }
@@ -357,6 +356,10 @@ div.jp-OutputPrompt {
   box-shadow: none;
 }
 
+.reveal ul {
+  font-weight: 400; }
+
+/* dedicated for KULeuven template*/
 .reveal .title {color: #fff;
   position: fixed;
   top: 22vh;
@@ -393,16 +396,12 @@ div.jp-OutputPrompt {
   width: 100vw;
   font-size: 2vh; 
   }
-  
 .reveal div .kuleuvenblue{
   color: #1D8DB0;
   }
 .reveal div .kuleuvenwhite{
   color: #fff;
   }
-
-.reveal ul {
-  font-weight: 400; }
 
 .reveal h1,
 .reveal h2,
@@ -436,19 +435,16 @@ div.jp-OutputPrompt {
 .reveal h1 {
   font-size: 10vh; 
   text-shadow: none; }
-
 .reveal h2 {
   font-size: 8vh; }
-
 .reveal h3 {
   font-size: 5vh; }
-
-.reveal h4 {
-  font-size: 4vh; }
-  
+.reveal h4,
+.reveal h5 {
+  font-size: 4vh; } 
 .reveal h6 {
   top: 0vh;
-  font-size: 5vh; 
+  font-size: 4vh; 
   height: 9vh;}
 
 /* Remove trailing margins after titles */
@@ -462,23 +458,25 @@ div.jp-OutputPrompt {
 }
 
 .reveal p {
-  margin: 20px 0;
+  margin: 2vw 0;
   line-height: 1.3; }
-  
+.MathJax {font-size: 1.4em;}   /* aan te passen */
+.reveal p .MathJax_Display { font-size: 1.4em; }   /* aan te passen */
 .jp-RenderedSVG svg {
-  top: 9vh;
-  width: auto;
-  height: 70vh;
+  position: fixed;
+  top: 10vh;
+  left: 0vw;
+  width: 100vw;
+  height: 80vh;
   object-fit: contain;
 }
-
 .jp-RenderedImage img {  
-  top: 9vh;
-  width: auto;
-  height: 70vh;
+  position: fixed;
+  top: 10vh;
+  left: 0vw;
+  width: 100vw;
+  height: 80vh;
   object-fit: contain;
 }
 
-.div csl-bib-body {text-align: left}  /* aan te passen */
-
- 
+.div csl-bib-body {text-align: left}   /* aan te passen */

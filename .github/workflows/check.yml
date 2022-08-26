@@ -54,34 +54,9 @@ jobs:
           PYTEST_ADDOPTS: "-vv --durations=20"
           CI_RUN: "yes"
 
-  check:
-    name: tox env ${{ matrix.tox_env }}
-    runs-on: ubuntu-20.04
-    strategy:
-      fail-fast: false
-      matrix:
-        tox_env:
-          - dev
-          - readme
-          - type
-    steps:
-      - uses: actions/checkout@v2
-        with:
-          fetch-depth: 0
-      - name: Setup Python "3.10"
-        uses: actions/setup-python@v2
-        with:
-          python-version: "3.10"
-      - name: Install tox
-        run: python -m pip install tox
-      - name: Setup test suite
-        run: tox -vv --notest -e ${{ matrix.tox_env }}
-      - name: Run test suite
-        run: tox --skip-pkg-install -e ${{ matrix.tox_env }}
-
   publish:
     if: github.event_name == 'push' && startsWith(github.ref, 'refs/tags')
-    needs: [check, test]
+    needs: [ test]
     runs-on: ubuntu-20.04
     steps:
       - name: Setup python to build package
