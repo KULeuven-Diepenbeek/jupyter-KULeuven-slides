@@ -282,7 +282,7 @@ div.jp-InputArea-editor {
 /*********************************************
  * PROGRESS BAR
  *********************************************/
- .reveal .progress span {
+.reveal .progress span {
   background: #727272;
 }
 
@@ -308,18 +308,6 @@ div.jp-InputArea-editor {
  *********************************************/
 @media print {
   .backgrounds {background-color: #fff; } }
-
-.kuleuven_title_slide { text-align: center; color: #fff;}
-.kuleuven_structure_slide,
-.kuleuven_slide {color: #2F4D5D;}
-
-.reveal .slide-number {
-  font-size: 2vh;
-  left: 4vh;
-  height: 3vh;
-  bottom: 1vh;
-  color: #fff;
-  background-color: transparent; }
 
 div.jp-InputArea-editor {
   padding: 0.06em;
@@ -360,6 +348,16 @@ div.jp-OutputPrompt {
   font-weight: 400; }
 
 /* dedicated for KULeuven template*/
+.kuleuven_title_slide { text-align: center; color: #fff;}
+.kuleuven_structure_slide,.kuleuven_slide {color: #2F4D5D;}
+.reveal .slide-number {
+  text-align: left;
+  font-size: 2vh;
+  left: 4vh;
+  height: 3vh;
+  bottom: 1vh;
+  color: #fff;
+  background-color: transparent; }
 .reveal .title {color: #fff;
   position: fixed;
   top: 22vh;
@@ -432,19 +430,16 @@ div.jp-OutputPrompt {
 .kuleuven_structure_slide h5,
 .kuleuven_structure_slide h6 {color: #00407A;} 
 
-.reveal h1 {
-  font-size: 10vh; 
+.reveal h1 {font-size: 10vh;  /* not used due to jupyter book ??*/
   text-shadow: none; }
-.reveal h2 {
-  font-size: 8vh; }
-.reveal h3 {
-  font-size: 5vh; }
-.reveal h4,
-.reveal h5 {
-  font-size: 4vh; } 
-.reveal h6 {
+.reveal h2 {font-size: 8vh; } /* for TOC structure slides */
+.reveal h3 {font-size: 5vh; } /* for TOC structure slides */
+.reveal h4 {font-size: 5vh; } /* for TOC structure slides */
+.reveal h5 {font-size: 4vh;   /* for 2 line slide titles */
   top: 0vh;
-  font-size: 4vh; 
+  height: 9vh;}
+.reveal h6 {font-size: 6vh;   /* for 1 line slide titles */
+  top: 0vh;
   height: 9vh;}
 
 /* Remove trailing margins after titles */
@@ -457,12 +452,21 @@ div.jp-OutputPrompt {
   margin-bottom: 0;
 }
 
+.reveal div .BottomSlideReference {
+  text-align: left;
+  font-size: 2vh;
+  left: 12vh;
+  height: 3vh;
+  bottom: 1vh;
+  color: #fff;
+  background-color: transparent; }
+
 .reveal p {
   margin: 2vw 0;
   line-height: 1.3; }
 .MathJax {font-size: 1.4em;}   /* aan te passen */
 .reveal p .MathJax_Display { font-size: 1.4em; }   /* aan te passen */
-.jp-RenderedSVG svg {
+.jp-RenderedSVG svg, .jp-RenderedImage img {
   position: fixed;
   top: 10vh;
   left: 0vw;
@@ -470,13 +474,4 @@ div.jp-OutputPrompt {
   height: 80vh;
   object-fit: contain;
 }
-.jp-RenderedImage img {  
-  position: fixed;
-  top: 10vh;
-  left: 0vw;
-  width: 100vw;
-  height: 80vh;
-  object-fit: contain;
-}
-
 .div csl-bib-body {text-align: left}   /* aan te passen */

@@ -33,11 +33,18 @@
  </aside>
 {%- elif cell.metadata.slide_type == 'skip' -%}
 {%- else -%}
-{%- if "KULeuvenSlides" in cell.metadata -%}
-{%- if "slide_title" in cell.metadata.KULeuvenSlides -%}
-<h6>{{ cell.metadata.KULeuvenSlides.slide_title }}</h6>
-{%- endif -%}
-{%- endif -%}
+	{%- if "KULeuvenSlides" in cell.metadata -%}
+		{%- if "slide_title" in cell.metadata.KULeuvenSlides -%}
+			{%- if "<BR>" in cell.metadata.KULeuvenSlides.slide_title -%}
+			<h5>{{ cell.metadata.KULeuvenSlides.slide_title }}</h5>
+			{%- else -%}
+			<h6>{{ cell.metadata.KULeuvenSlides.slide_title }}</h6>
+			{%- endif -%}
+		{%- endif -%}
+		{%- if "slide_ref" in cell.metadata.KULeuvenSlides -%}
+			<div class="BottomSlideReference">{{ cell.metadata.KULeuvenSlides.slide_ref }}</div>
+		{%- endif -%}
+	{%- endif -%}
 {{ super() }}
 {%- endif -%}
 
