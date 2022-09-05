@@ -166,10 +166,10 @@ if( window.location.search.match( /print-pdf/gi ) ) {
   {%- if "KULeuvenSlides" in nb.metadata -%}
   <section data-state='kuleuven_title_slide reveal'><section>
   {%- if "title" in nb.metadata.KULeuvenSlides -%}
-    <h1 class="title">{{ nb.metadata.KULeuvenSlides.title }}</h1>
+    <div class="title">{{ nb.metadata.KULeuvenSlides.title }}</div>
   {%- endif -%}
   {%- if "subtitle" in nb.metadata.KULeuvenSlides -%}
-    <h2 class="subtitle">{{ nb.metadata.KULeuvenSlides.subtitle }}</h2>
+    <div class="subtitle">{{ nb.metadata.KULeuvenSlides.subtitle }}</div>
   {%- endif -%}
   {%- if "kuleuven_presentation_style" in nb.metadata.KULeuvenSlides -%}
   {%- if nb.metadata.KULeuvenSlides.kuleuven_presentation_style=="Normal" -%}
@@ -211,6 +211,19 @@ if( window.location.search.match( /print-pdf/gi ) ) {
 {%- endblock body_header -%}
 
 {% block body_footer %}
+{%- if "KULeuvenSlides" in nb.metadata -%}
+  <section data-state='kuleuven_structure_slide reveal'><section>
+  {%- if "endquote" in nb.metadata.KULeuvenSlides -%}
+    <div class="endquote">{{ nb.metadata.KULeuvenSlides.endquote }}</div>
+	  {%- if "quoteauthor" in nb.metadata.KULeuvenSlides -%}
+        <div class="quoteauthor">{{ nb.metadata.KULeuvenSlides.quoteauthor }}</div>
+      {%- endif -%}
+  {%- else -%}
+  <div class="endquote">I would rather have questions that can't be answered<BR>than answers that can't be questioned.</div>
+  <div class="quoteauthor">Richard Feynman</div>
+  {%- endif -%}
+  </section></section>
+{%- endif -%}
 </div>
 </div>
 </body>

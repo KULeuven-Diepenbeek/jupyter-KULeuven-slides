@@ -299,10 +299,13 @@ div.jp-InputArea-editor {
 ::-webkit-scrollbar * {
   background: transparent;
 }
+
+/*                                     *** na te kijken ***
 ::-webkit-scrollbar-thumb {
   background: #727272 !important;
 } 
-  
+*/
+
 /*********************************************
  * PRINT BACKGROUND
  *********************************************/
@@ -358,20 +361,24 @@ div.jp-OutputPrompt {
   bottom: 1vh;
   color: #fff;
   background-color: transparent; }
-.reveal .title {color: #fff;
+.reveal div .title {color: #fff;
   position: fixed;
   top: 22vh;
   height: 20 vh;
   width: 75vw; 
   font-size: 11vh;
-  }
-.reveal .subtitle {color: #fff;
+  text-transform: uppercase;
+  text-shadow: none;
+  word-wrap: break-word;}
+.reveal div .subtitle {color: #fff;
   position: fixed;
   top: 45vh; 
   height: 15vh;
   width: 75vw;
   font-size: 5vh;
-  }
+  text-transform: uppercase;
+  text-shadow: none;
+  word-wrap: break-word;}
 .reveal div .speaker {
   position: fixed;
   top: 70vh;
@@ -430,15 +437,15 @@ div.jp-OutputPrompt {
 .kuleuven_structure_slide h5,
 .kuleuven_structure_slide h6 {color: #00407A;} 
 
-.reveal h1 {font-size: 10vh;  /* not used due to jupyter book ??*/
+.reveal h1 {font-size: 10vh;  /* for full-slide titles*/
   text-shadow: none; }
-.reveal h2 {font-size: 8vh; } /* for TOC structure slides */
-.reveal h3 {font-size: 5vh; } /* for TOC structure slides */
-.reveal h4 {font-size: 5vh; } /* for TOC structure slides */
-.reveal h5 {font-size: 4vh;   /* for 2 line slide titles */
+.reveal h2 {font-size: 4vh;text-align: left;position: relative;left: 2vw } /* for TOC structure slides */
+.reveal h3 {font-size: 3vh;text-align: left;position: relative;left: 5vw } /* for TOC structure slides */
+.reveal h4 {font-size: 2vh;text-align: left;position: relative;left: 8vw } /* for TOC structure slides */
+.reveal h5 {font-size: 3vh;   /* for 2 line slide titles */
   top: 0vh;
   height: 9vh;}
-.reveal h6 {font-size: 6vh;   /* for 1 line slide titles */
+.reveal h6 {font-size: 4vh;   /* for 1 line slide titles */
   top: 0vh;
   height: 9vh;}
 
@@ -453,14 +460,33 @@ div.jp-OutputPrompt {
 }
 
 .reveal div .BottomSlideReference {
+  position: fixed;
   text-align: left;
   font-size: 2vh;
   left: 12vh;
   height: 3vh;
-  bottom: 1vh;
+  bottom: 2vh;
   color: #fff;
   background-color: transparent; }
-
+.reveal div .endquote { 
+  position: fixed;
+  text-align: centre;
+  font-size: 5vh;
+  left: 5vh;
+  width: 70vw;
+  top: 25vh;
+  height: 6vh;
+  color: #1D8DB0;
+  background-color: transparent; }
+.reveal div .quoteauthor { 
+  position: fixed;
+  text-align: right;
+  font-size: 3vh;
+  right: 32vh;
+  height: 3vh;
+  bottom: 25vh;
+  color: #1D8DB0;
+  background-color: transparent; }
 .reveal p {
   margin: 2vw 0;
   line-height: 1.3; }
@@ -474,4 +500,5 @@ div.jp-OutputPrompt {
   height: 80vh;
   object-fit: contain;
 }
-.div csl-bib-body {text-align: left}   /* aan te passen */
+div .csl-left-margin {float:left;}
+div .csl-right-inline{text-align: left}
