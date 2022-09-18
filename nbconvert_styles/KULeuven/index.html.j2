@@ -1,0 +1,273 @@
+{%- extends 'base.html.j2' -%}
+{% from 'mathjax.html.j2' import mathjax %}
+{% from 'jupyter_widgets.html.j2' import jupyter_widgets %}
+
+{% set reveal_url_prefix = resources.reveal.url_prefix | default('https://unpkg.com/reveal.js@4.3.1', true) %}
+{% set reveal_scroll = resources.reveal.scroll | default(false, true) | json_dumps %}
+
+{%- block header -%}
+<!DOCTYPE html>
+<html>
+<head>
+
+{%- block html_head -%}
+<meta charset="utf-8" />
+<meta http-equiv="X-UA-Compatible" content="chrome=1" />
+
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+{% set nb_title = nb.metadata.get('title', '') or resources['metadata']['name'] %}
+<title>{{nb_title}} slides</title>
+
+{%- block html_head_js -%}
+{%- block html_head_js_jquery -%}
+<script src="{{ resources.jquery_url }}"></script>
+{%- endblock html_head_js_jquery -%}
+{%- block html_head_js_requirejs -%}
+<script src="{{ resources.require_js_url }}"></script>
+{%- endblock html_head_js_requirejs -%}
+{%- endblock html_head_js -%}
+
+{% block jupyter_widgets %}
+  {%- if "widgets" in nb.metadata -%}
+    {{ jupyter_widgets(resources.jupyter_widgets_base_url, resources.html_manager_semver_range, resources.widget_renderer_url) }}
+  {%- endif -%}
+{% endblock jupyter_widgets %}
+
+<!-- General and theme style sheets -->
+<link rel="stylesheet" href="{{ reveal_url_prefix }}/dist/reveal.css">
+
+<!-- If the query includes 'print-pdf', include the PDF print sheet -->
+<script>
+if( window.location.search.match( /print-pdf/gi ) ) {
+        var link = document.createElement( 'link' );
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        document.getElementsByTagName( 'head' )[0].appendChild( link );
+}
+</script>
+
+{% for css in resources.inlining.css -%}
+  <style type="text/css">
+    {{ css }}
+  </style>
+{% endfor %}
+
+{% block notebook_css %}
+{{ resources.include_css("static/index.css") }}
+{{ resources.include_css("static/theme-light.css") }}
+{{ resources.include_css("KULeuven.css") }}
+<style type="text/css">
+
+  {%- if "KULeuvenSlides" in nb.metadata -%}
+  {%- if "kuleuven_presentation_style" in nb.metadata.KULeuvenSlides -%}
+  {%- if nb.metadata.KULeuvenSlides.kuleuven_presentation_style=="Sedes" -%}
+
+.kuleuven_title_slide {background: url(data:image/png;base64,{{ resources['kul-img'] }}),url(data:image/png;base64,{{ resources['sedes-img'] }}),linear-gradient(#fff 9vh, #1D8DB0 9vh);
+    background-repeat: no-repeat,no-repeat,no-repeat;
+    background-position: 4.5vh 3vh, right bottom, top;
+    background-size: 65vh, 70vh,  100%;}
+.kuleuven_structure_slide {background: url(data:image/png;base64,{{ resources['KULeuven-img'] }}),url(data:image/png;base64,{{ resources['sedes-img'] }}),linear-gradient( #DCE7F0 91vh, #1D8DB0 91vh);
+    background-position: right 11vw bottom 1.5vh,right bottom 9vh, bottom;
+    background-size: 15vh,60vh,100%;
+    background-repeat: no-repeat,no-repeat,no-repeat;}
+.kuleuven_slide {background: url(data:image/png;base64,{{ resources['KULeuven-img'] }}),url(data:image/png;base64,{{ resources['sedes-sde-img'] }}),linear-gradient(#fff 91vh,#1D8DB0 91vh);
+    background-position: right 11vw bottom 1.5vh,right bottom 9vh, bottom;
+    background-size: 15vh,60vh,100%;
+    background-repeat: no-repeat,no-repeat,no-repeat;}
+
+    {%- elif nb.metadata.KULeuvenSlides.kuleuven_presentation_style=="1425" -%}
+
+.kuleuven_title_slide {background: url(data:image/png;base64,{{ resources['kul-img'] }}),url(data:image/png;base64,{{ resources['sleutel-img'] }}),linear-gradient(#fff 9vh, #1D8DB0 9vh);
+    background-position: 4.5vh 3vh, right bottom 9vh, top;
+    background-size: 65vh, 35vh,  100%;
+    background-repeat: no-repeat,no-repeat,no-repeat;}
+.kuleuven_structure_slide {background: url(data:image/png;base64,{{ resources['KULeuven-img'] }}),url(data:image/png;base64,{{ resources['sleutel-img'] }}),linear-gradient( #DCE7F0 91vh, #1D8DB0 91vh);
+    background-position: right 11vw bottom 1.5vh,right bottom 9vh, bottom;
+    background-size: 15vh,38vh,100%;
+    background-repeat: no-repeat,no-repeat,no-repeat;}
+.kuleuven_slide {background: url(data:image/png;base64,{{ resources['KULeuven-img'] }}),url(data:image/png;base64,{{ resources['sedes-sde-img'] }}),linear-gradient(#fff 91vh,#1D8DB0 91vh);
+    background-position: right 11vw bottom 1.5vh,right bottom 9vh, bottom;
+    background-size: 15vh,60vh,100%;
+    background-repeat: no-repeat,no-repeat,no-repeat;}
+
+
+    {%- else -%}
+
+.kuleuven_title_slide {background: url(data:image/png;base64,{{ resources['kul-img'] }}),linear-gradient(#1D8DB0 70vh,#DCE7F0 70vh);
+    background-position: 4.5vh 3vh,  bottom;
+    background-size: 65vh,   100%;
+    background-repeat: no-repeat,no-repeat;}
+.kuleuven_structure_slide {background: url(data:image/png;base64,{{ resources['KULeuven-img'] }}),linear-gradient( #DCE7F0 91vh, #1D8DB0 91vh);
+    background-position: right 11vw bottom 1.5vh, bottom;
+    background-size: 15vh,100%;
+    background-repeat: no-repeat,no-repeat;}
+.kuleuven_slide {background: url(data:image/png;base64,{{ resources['KULeuven-img'] }}),linear-gradient(#fff 91vh,#1D8DB0 91vh);
+    background-position: right 11vw bottom 1.5vh, bottom;
+    background-size: 15vh,100%;
+    background-repeat: no-repeat,no-repeat;}
+
+    {%- endif -%}
+    
+    {%- else -%}
+
+.kuleuven_title_slide {background: url(data:image/png;base64,{{ resources['kul-img'] }}),linear-gradient(#1D8DB0 70vh,#DCE7F0 70vh);
+    background-position: 4.5vh 3vh,  bottom;
+    background-size: 65vh,   100%;
+    background-repeat: no-repeat,no-repeat;}
+.kuleuven_structure_slide {background: url(data:image/png;base64,{{ resources['KULeuven-img'] }}),linear-gradient( #DCE7F0 91vh, #1D8DB0 91vh);
+    background-position: right 11vw bottom 1.5vh, bottom;
+    background-size: 15vh,100%;
+    background-repeat: no-repeat,no-repeat;}
+.kuleuven_slide {background: url(data:image/png;base64,{{ resources['KULeuven-img'] }}),linear-gradient(#fff 91vh,#1D8DB0 91vh);
+    background-position: right 11vw bottom 1.5vh, bottom;
+    background-size: 15vh,100%;
+    background-repeat: no-repeat,no-repeat;}
+
+    {%- endif -%}
+    
+    {%- else -%}
+
+.kuleuven_title_slide {background: url(data:image/png;base64,{{ resources['kul-img'] }}),linear-gradient(#1D8DB0 70vh,#DCE7F0 70vh);
+    background-position: 4.5vh 3vh,  bottom;
+    background-size: 65vh,   100%;
+    background-repeat: no-repeat,no-repeat;}
+.kuleuven_structure_slide {background: url(data:image/png;base64,{{ resources['KULeuven-img'] }}),linear-gradient( #DCE7F0 91vh, #1D8DB0 91vh);
+    background-position: right 11vw bottom 1.5vh, bottom;
+    background-size: 15vh,100%;
+    background-repeat: no-repeat,no-repeat;}
+.kuleuven_slide {background: url(data:image/png;base64,{{ resources['KULeuven-img'] }}),linear-gradient(#fff 91vh,#1D8DB0 91vh);
+    background-position: right 11vw bottom 1.5vh, bottom;
+    background-size: 15vh,100%;
+    background-repeat: no-repeat,no-repeat;}
+
+    {%- endif -%}
+</style>
+{% endblock notebook_css %}
+
+{%- block html_head_js_mathjax -%}
+{{ mathjax(resources.mathjax_url) }}
+{%- endblock html_head_js_mathjax -%}
+
+{%- block html_head_css -%}
+{%- endblock html_head_css -%}
+
+{%- endblock html_head -%}
+
+</head>
+{% endblock header%}
+
+{%- block body_header -%}
+<body class="jp-Notebook" data-jp-theme-light="true" data-jp-theme-name="JupyterLab Light">
+<div class="reveal">
+<div class="slides">
+
+  {%- if "KULeuvenSlides" in nb.metadata -%}
+  <section data-state='kuleuven_title_slide reveal'><section>
+  {%- if "title" in nb.metadata.KULeuvenSlides -%}
+    <div class="title">{{ nb.metadata.KULeuvenSlides.title }}</div>
+  {%- endif -%}
+  {%- if "subtitle" in nb.metadata.KULeuvenSlides -%}
+    <div class="subtitle">{{ nb.metadata.KULeuvenSlides.subtitle }}</div>
+  {%- endif -%}
+  {%- if "kuleuven_presentation_style" in nb.metadata.KULeuvenSlides -%}
+  {%- if nb.metadata.KULeuvenSlides.kuleuven_presentation_style=="Normal" -%}
+  {%- if "authors" in nb.metadata.KULeuvenSlides -%}
+    <div class="speaker kuleuvenblue" >{{ nb.metadata.KULeuvenSlides.authors }}</div>
+  {%- endif -%}
+  {%- if "location" in nb.metadata.KULeuvenSlides -%}
+    <div class="location kuleuvenblue" >{{ nb.metadata.KULeuvenSlides.location }}</div>
+  {%- endif -%}
+  {%- if "date" in nb.metadata.KULeuvenSlides -%}
+    <div class="date kuleuvenblue" >{{ nb.metadata.KULeuvenSlides.date }}</div>
+  {%- endif -%}
+  {%- else -%}
+  {%- if "authors" in nb.metadata.KULeuvenSlides -%}
+   <div class="speaker kuleuvenwhite" >{{ nb.metadata.KULeuvenSlides.authors }}</div>
+  {%- endif -%}
+  {%- if "location" in nb.metadata.KULeuvenSlides -%}
+    <div class="location kuleuvenwhite" >{{ nb.metadata.KULeuvenSlides.location }}</div>
+  {%- endif -%}
+  {%- if "date" in nb.metadata.KULeuvenSlides -%}
+    <div class="date kuleuvenwhite" >{{ nb.metadata.KULeuvenSlides.date }}</div>
+  {%- endif -%}
+  
+  {%- endif -%}
+  {%- else -%}
+  {%- if "authors" in nb.metadata.KULeuvenSlides -%}
+   <div class="speaker kuleuvenblue" >{{ nb.metadata.KULeuvenSlides.authors }}</div>
+  {%- endif -%}
+  {%- if "location" in nb.metadata.KULeuvenSlides -%}
+    <div class="location kuleuvenblue" >{{ nb.metadata.KULeuvenSlides.location }}</div>
+  {%- endif -%}
+  {%- if "date" in nb.metadata.KULeuvenSlides -%}
+    <div class="date kuleuvenblue" >{{ nb.metadata.KULeuvenSlides.date }}</div>
+  {%- endif -%}
+  {%- endif -%}
+  </section></section>
+  {%- endif -%}
+
+{%- endblock body_header -%}
+
+{% block body_footer %}
+{%- if "KULeuvenSlides" in nb.metadata -%}
+  <section data-state='kuleuven_structure_slide reveal'><section>
+  {%- if "endquote" in nb.metadata.KULeuvenSlides -%}
+    <div class="endquote">{{ nb.metadata.KULeuvenSlides.endquote }}</div>
+	  {%- if "quoteauthor" in nb.metadata.KULeuvenSlides -%}
+        <div class="quoteauthor">{{ nb.metadata.KULeuvenSlides.quoteauthor }}</div>
+      {%- endif -%}
+  {%- else -%}
+  <div class="endquote">I would rather have questions that can't be answered<BR>than answers that can't be questioned.</div>
+  <div class="quoteauthor">Richard Feynman</div>
+  {%- endif -%}
+  </section></section>
+{%- endif -%}
+</div>
+</div>
+</body>
+{% endblock body_footer %}
+
+{% block footer %}
+{{ super() }}
+
+
+{% block footer_js %}
+<script>
+require(
+    {
+      // it makes sense to wait a little bit when you are loading reveal from a cdn in a slow connection environment
+      waitSeconds: 5
+    },
+    [
+      "{{ reveal_url_prefix }}/dist/reveal.js",
+      "{{ reveal_url_prefix }}/plugin/notes/notes.js"
+    ],
+
+    function(Reveal, RevealNotes){
+        // Full list of configuration options available here: https://revealjs.com/config/  
+        Reveal.initialize({
+            controls: true,
+            progress: true,
+            history: true,
+            disableLayout: true,
+			navigationMode: "linear",
+            transition: "slide",
+            slideNumber: "c/t",
+            plugins: [RevealNotes]
+        });
+
+        var update = function(event){
+          if(MathJax.Hub.getAllJax(Reveal.getCurrentSlide())){
+            MathJax.Hub.Rerender(Reveal.getCurrentSlide());
+          }
+        };
+
+		Reveal.addEventListener('slidechanged', update);
+    }
+);
+</script>
+{% endblock footer_js %}
+</html>
+{% endblock footer %}

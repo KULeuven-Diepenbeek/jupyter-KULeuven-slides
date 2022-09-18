@@ -1,0 +1,64 @@
+{%- extends 'lab/base.html.j2' -%}
+{%- block any_cell scoped -%}
+
+{%- if cell.metadata.get('slide_start', False) -%}
+		{%- if "KULeuvenSlides" in cell.metadata -%}
+		{%- if "structureCellBefore" in cell.metadata.KULeuvenSlides -%}
+			<section data-state="kuleuven_structure_slide">
+			<h6>outline</h6>
+			{{ cell.metadata.KULeuvenSlides.structureCellBefore }}
+		{%- elif "slide_code" in cell.metadata.KULeuvenSlides -%}
+			 {%- if cell.metadata.KULeuvenSlides.slide_code == "title" -%}
+			   <section data-state="kuleuven_title_slide">
+			 {%- elif cell.metadata.KULeuvenSlides.slide_code == "structure" -%}
+			   <section data-state="kuleuven_structure_slide">
+			 {%- else -%}
+			   <section data-state="kuleuven_slide">
+			 {%- endif -%}
+		{%- else -%}
+		<section data-state="kuleuven_slide">
+		{%- endif -%}
+	{%- else -%}
+	<section data-state="kuleuven_slide">
+	{%- endif -%}
+{%- endif -%}
+
+{%- if cell.metadata.get('subslide_start', False) -%}
+  <section>
+{%- endif -%}
+
+{%- if cell.metadata.get('fragment_start', False) -%}
+  <div class="fragment">
+{%- endif -%}
+
+{%- if cell.metadata.slide_type == 'notes' -%}
+ <aside class="notes">
+ {{ super() }}
+ </aside>
+{%- elif cell.metadata.slide_type == 'skip' -%}
+{%- else -%}
+	{%- if "KULeuvenSlides" in cell.metadata -%}
+		{%- if "slide_title" in cell.metadata.KULeuvenSlides -%}
+			{%- if "<BR>" in cell.metadata.KULeuvenSlides.slide_title -%}
+			<h5>{{ cell.metadata.KULeuvenSlides.slide_title }}</h5>
+			{%- else -%}
+			<h6>{{ cell.metadata.KULeuvenSlides.slide_title }}</h6>
+			{%- endif -%}
+		{%- endif -%}
+		{%- if "slide_ref" in cell.metadata.KULeuvenSlides -%}
+			<div class="BottomSlideReference">{{ cell.metadata.KULeuvenSlides.slide_ref }}</div>
+		{%- endif -%}
+	{%- endif -%}
+{{ super() }}
+{%- endif -%}
+
+{%- if cell.metadata.get('fragment_end', False) -%}
+</div>
+{%- endif -%}
+{%- if cell.metadata.get('subslide_end', False) -%}
+</section>
+{%- endif -%}
+{%- if cell.metadata.get('slide_end', False) -%}
+</section>
+{%- endif -%}
+{%- endblock any_cell -%}
