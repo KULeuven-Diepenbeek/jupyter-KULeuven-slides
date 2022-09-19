@@ -93,7 +93,7 @@ Please do not forget to commit changes after adding metadata. (The small **v** o
 
 # Develop notes
 
-For building and developing this template, please [see here]( https://github.com/sheeshee/nbconvert-template-example/)
+For building and developing this [template]( https://github.com/sheeshee/nbconvert-template-example/) has been used.
 
 For the reveal.js template that is used as  a source, please [see here](https://github.com/fmoralesc/reveal.js-kuleuven)
 
