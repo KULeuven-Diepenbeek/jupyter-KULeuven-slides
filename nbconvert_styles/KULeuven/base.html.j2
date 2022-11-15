@@ -1,8 +1,19 @@
 {%- extends 'lab/base.html.j2' -%}
+
+{% block data_svg scoped -%}
+<div class="jp-RenderedSVG jp-OutputArea-output {{ extra_class }}" data-mime-type="image/svg+xml">
+{%- if output.svg_filename %}
+<img src="{{ output.svg_filename | posix_path | escape_html }}">
+{%- else %}
+{{ output.data['image/svg+xml'] }}
+{%- endif %}
+</div>
+{%- endblock data_svg %}
+
 {%- block any_cell scoped -%}
 
 {%- if cell.metadata.get('slide_start', False) -%}
-		{%- if "KULeuvenSlides" in cell.metadata -%}
+	{%- if "KULeuvenSlides" in cell.metadata -%}
 		{%- if "structureCellBefore" in cell.metadata.KULeuvenSlides -%}
 			<section data-state="kuleuven_structure_slide">
 			<h6>outline</h6>

@@ -7,9 +7,9 @@
         "100-remove-tags" : {
             "type": "nbconvert.preprocessors.TagRemovePreprocessor",
             "enabled": true,
-            "remove_cell_tags": ["remove_cell"],
-            "remove_all_outputs_tags": ["remove_output"],
-            "remove_input_tags": ["remove_input"]
+            "remove_cell_tags": ["remove_cell4reveal"],
+            "remove_all_outputs_tags": ["remove_output4reveal"],
+            "remove_input_tags": ["remove_input4reveal"]
         }
     }
 }
