@@ -1,8 +1,4 @@
-<<<<<<< HEAD
 nbconvert>=7.2.5
-=======
-nbconvert==6.5.0
->>>>>>> 31a09b36551872f429b4627d88ed2797b5cb7c58
 html5lib
 build
 twine
