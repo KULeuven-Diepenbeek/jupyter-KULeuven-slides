@@ -2,7 +2,7 @@
 
 ## Reporting a Vulnerability
 
-If you find a potential security issue, please report it to @jangenoe.
+If you find a potential security issue, please report it to using the `Report a vulnerability` button.
 
 We will try to find a fix in a timely manner and will then issue a security advisory together with the update via GitHub.
 
