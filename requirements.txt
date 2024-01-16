@@ -1,4 +1,4 @@
-nbconvert>=7.2.5
+nbconvert>=7.14.2
 html5lib
 build
 twine
