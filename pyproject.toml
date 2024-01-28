@@ -1,6 +1,47 @@
 [build-system]
-requires = [
-    "setuptools>=42",
-    "wheel"
-]
+requires = ["setuptools>=42","wheel"]
 build-backend = "setuptools.build_meta"
+
+[project]
+name = "jupyter-KULeuven-slides"
+version = "0.3.4"
+dependencies = ["jinja2>=3.0","nbconvert>=7.2.5"]
+authors = [{name = "Jan Genoe", email = "jan.genoe@kuleuven.be"}]
+description = "A minimal and pip-installable jupyter nbconvert template for KULeuven slides."
+readme = "README.md"
+#home-page = "https://github.com/KULeuven-Diepenbeek/jupyter-KULeuven-slides"
+requires-python = ">=3.8"
+keywords = ["jupyter", "KULeuven","slides"]
+license = {text = "MIT"}
+classifiers = ["Framework :: Jupyter",
+    "Intended Audience :: Science/Research",
+    "Intended Audience :: Education",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent"
+]
+
+[tool.setuptools]
+#package-dir = {"" = ""}
+packages = ["nbconvert_styles"]
+include-package-data = true
+
+[tool.setuptools.package-data]
+nbconvert_styles = ["*.j2", "*.json", "*.png", "*.css"]
+
+[tool.setuptools.exclude-package-data]
+nbconvert_styles = [".gitattributes",".ipynb_checkpoints",".gitignore","*.html-checkpoint.j2"]
+
+#[project.scripts]
+#[options.entry_points]
+[project.entry-points."nbconvert.exporters"]
+    KULeuven = "nbconvert_styles:KULeuvenExporter"
+	
+# [tool.pytest.ini_options]
+
+# test = ["pytest","tox"]
