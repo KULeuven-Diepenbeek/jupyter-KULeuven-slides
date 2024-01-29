@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "jupyter-KULeuven-slides"
-version = "0.3.4"
+version = "0.3.5"
 dependencies = ["jinja2>=3.0","nbconvert>=7.2.5"]
 authors = [{name = "Jan Genoe", email = "jan.genoe@kuleuven.be"}]
 description = "A minimal and pip-installable jupyter nbconvert template for KULeuven slides."
