@@ -42,6 +42,29 @@ nbconvert_styles = [".gitattributes",".ipynb_checkpoints",".gitignore","*.html-c
 [project.entry-points."nbconvert.exporters"]
     KULeuven = "nbconvert_styles:KULeuvenExporter"
 	
-# [tool.pytest.ini_options]
+[tool.pytest.ini_options]
+filterwarnings =
+    "ignore::DeprecationWarning"
 
 # test = ["pytest","tox"]
+
+[tool.tox]
+legacy_tox_ini = """
+	[tox]
+	isolated_build = True
+	envlist =  py39
+
+	[testenv]
+	deps =
+		numpy
+		matplotlib
+		pytest
+		html5lib
+	commands =
+		# Run the test suite for the custom Exporter
+		pytest
+		# Check that the command can be executed properly
+		jupyter nbconvert --to KULeuven --no-prompt --no-input "KULeuven slides test.ipynb"
+		jupyter nbconvert --to KULeuven --no-prompt --no-input "Sedes KULeuven slides test.ipynb"
+		jupyter nbconvert --to KULeuven --no-prompt --no-input "KULeuven 1425 test.ipynb"
+"""
