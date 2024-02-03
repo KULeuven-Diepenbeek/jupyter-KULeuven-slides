@@ -30,7 +30,7 @@ class KULeuvenExporter(SlidesExporter):
         resources['sleutel-img'] = encode_image(os.path.join(self.template_dir, 'sleutel.png'))
         resources['kul-img'] = encode_image(os.path.join(self.template_dir, 'KUL.png'))
         resources['KULeuven-img'] = encode_image(os.path.join(self.template_dir, 'KULeuven.png'))
-        
+        resources['reveal']['url_prefix'] ='https://unpkg.com/reveal.js'
         return resources
 
 
