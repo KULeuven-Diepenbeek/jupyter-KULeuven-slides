@@ -30,7 +30,11 @@ class KULeuvenExporter(SlidesExporter):
         resources['sleutel-img'] = encode_image(os.path.join(self.template_dir, 'sleutel.png'))
         resources['kul-img'] = encode_image(os.path.join(self.template_dir, 'KUL.png'))
         resources['KULeuven-img'] = encode_image(os.path.join(self.template_dir, 'KULeuven.png'))
+        # see https://nbconvert.readthedocs.io/en/latest/config_options.html https://revealjs.com/config/  
         resources['reveal']['url_prefix'] ='https://unpkg.com/reveal.js'
+        # resources['reveal']['transition']='slide'
+        # resources['reveal']['height'] =700
+        # resources['reveal']['width'] =960
         return resources
 
 
