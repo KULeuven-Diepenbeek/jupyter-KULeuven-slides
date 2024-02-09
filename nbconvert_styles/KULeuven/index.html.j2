@@ -239,6 +239,8 @@ if( window.location.search.match( /print-pdf/gi ) ) {
 
 
 {% block footer_js %}
+<script src="{{ reveal_url_prefix }}-drawer/dist/drawer.js"></script>
+<script src="{{ reveal_url_prefix }}-pointer/dist/pointer.js"></script>
 <script>
 require(
     {
