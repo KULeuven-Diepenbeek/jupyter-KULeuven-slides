@@ -247,9 +247,7 @@ require(
     },
     [
       "{{ reveal_url_prefix }}/dist/reveal.js",
-      "{{ reveal_url_prefix }}/plugin/notes/notes.js", 
-	  // "{{ reveal_url_prefix }}-drawer/dist/drawer.js", 
-      // "{{ reveal_url_prefix }}-pointer/dist/pointer.js"
+      "{{ reveal_url_prefix }}/plugin/notes/notes.js"
     ],
 
     function(Reveal, RevealNotes,RevealPointer, RevealDrawer){
@@ -261,24 +259,10 @@ require(
 			navigationMode: "linear",
             transition: "{{reveal_transition}}",
             slideNumber: "c/t",
-            plugins: [RevealNotes], //,RevealPointer, RevealDrawer],  // Hij vindt het ID van deze plugins niet
+            plugins: [RevealNotes],
             disableLayout: true,
             width: {{reveal_width}},
-			height: {{reveal_height}},
-			pointer: {                // https://github.com/burnpiro/reveal-pointer
-				key: "q", // key to enable pointer, default "q", not case-sensitive
-				color: "blue", // color of a cursor, default "red" any valid CSS color
-				opacity: 0.8, // opacity of cursor, default 0.8
-				pointerSize: 12, // pointer size in px, default 12
-				alwaysVisible: false, // should pointer mode be always visible? default "false"
-				},
-			drawer: {                   // https://github.com/burnpiro/reveal-drawer
-				toggleDrawKey: "d", // (optional) key to enable drawing, default "d"
-				toggleBoardKey: "t", // (optional) key to show drawing board, default "t"
-				colors: ["#fa1e0e", "#8ac926", "#1982c4", "#ffca3a"], // (optional) list of colors available (hex color codes)
-				color: "#FF0000", // (optional) color of a cursor, first color from `codes` is a default
-				pathSize: 4, // (optional) path size in px, default 4
-			  }
+			height: {{reveal_height}}
         });
 
         var update = function(event){
