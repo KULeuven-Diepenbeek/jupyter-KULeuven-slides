@@ -15,11 +15,11 @@ This will make the reveal.js template "KULeuven" available in the python environ
 
 First mark (using the ```property inspector``` menu at the left hand side) the start of each slide in any existing Jupyter notebook, by selecting ```slide```  under the topic ```Slide type```.
 
-![Slide type selection](assets/images/ScreenshotSlideTypeSelection.png)
+![Slide type selection](../assets/images/ScreenshotSlideTypeSelection.png)
 
 Subsequently, using the jupyterlab top-menu, please select :```File``` -> ```Save and Export Notebook as``` -> ```KULeuven```
 
-![Export your slides](assets/images/ScreenshotSlideExport.png)
+![Export your slides](../assets/images/ScreenshotSlideExport.png)
 
 
 # Command line
@@ -53,7 +53,7 @@ You can add a title slide, by adding the **notebook metadata** a section labeled
  Please do not forget to commit these changes to the jupyter notebook changes after adding this metadata. (The small **v** on top of the box).
 The screenshot below shows a possible implementation:
 
-![Notebook Metadata](assets/images/ScreenshotNotebookMetadata.png)
+![Notebook Metadata](../assets/images/ScreenshotNotebookMetadata.png)
 
 Please do not forget to commit changes after adding metadata. (The small **v** on top of the box).
 
@@ -87,7 +87,7 @@ A structure slide, typically for the outline of the presentation, can be added a
     },
 ```
 (typically there will be already the ```slide_type``` present in this section)
-![cell metadata](assets/images/ScreenshotCellMetadata.png)
+![cell metadata](../assets/images/ScreenshotCellMetadata.png)
 
 Please do not forget to commit changes after adding metadata. (The small **v** on top of the box).
 
