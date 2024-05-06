@@ -6,7 +6,6 @@ import base64
 
 from nbconvert.exporters import SlidesExporter
 
-
 class KULeuvenExporter(SlidesExporter):
     """
     A custom exporter that points to the KULeuven Reveal slides template.

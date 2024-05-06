@@ -8,7 +8,7 @@ version = "0.3.7"
 dependencies = ["jinja2>=3.0","nbconvert>=7.15.0"]
 authors = [{name = "Jan Genoe", email = "jan.genoe@kuleuven.be"}]
 description = "A minimal and pip-installable jupyter nbconvert template for KULeuven slides."
-readme = "README.md"
+readme = ".github/README.md"
 #home-page = "https://github.com/KULeuven-Diepenbeek/jupyter-KULeuven-slides"
 requires-python = ">=3.8"
 keywords = ["jupyter", "KULeuven","slides"]
