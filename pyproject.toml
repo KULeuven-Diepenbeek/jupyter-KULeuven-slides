@@ -5,25 +5,29 @@ build-backend = "setuptools.build_meta"
 [project]
 name = "jupyter-KULeuven-slides"
 version = "0.3.7"
-dependencies = ["jinja2>=3.0","nbconvert>=7.15.0"]
+dependencies = ["jinja2>=3.0","nbconvert>=7.16.6"]
 authors = [{name = "Jan Genoe", email = "jan.genoe@kuleuven.be"}]
 description = "A minimal and pip-installable jupyter nbconvert template for KULeuven slides."
 readme = ".github/README.md"
 #home-page = "https://github.com/KULeuven-Diepenbeek/jupyter-KULeuven-slides"
-requires-python = ">=3.8"
+requires-python = ">=3.12"
 keywords = ["jupyter", "KULeuven","slides"]
 license = {text = "MIT"}
 classifiers = ["Framework :: Jupyter",
     "Intended Audience :: Science/Research",
     "Intended Audience :: Education",
-    "Programming Language :: Python :: 3",
-    "Programming Language :: Python :: 3.8",
-    "Programming Language :: Python :: 3.9",
-    "Programming Language :: Python :: 3.10",
-    "Programming Language :: Python :: 3.11",
     "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Programming Language :: Python :: 3.14",
     "License :: OSI Approved :: MIT License",
     "Operating System :: OS Independent"
+]
+
+[project.optional-dependencies]
+dev = [
+    "html5lib",
+    "build", 
+    "twine"
 ]
 
 [tool.setuptools]
@@ -32,7 +36,7 @@ packages = ["nbconvert_styles"]
 include-package-data = true
 
 [tool.setuptools.package-data]
-nbconvert_styles = ["*.j2", "*.json", "*.png", "*.css"]
+nbconvert_styles = ["**/*"]  # This replaces "graft nbconvert_styles" from MANIFEST.in
 
 [tool.setuptools.exclude-package-data]
 nbconvert_styles = [".gitattributes",".ipynb_checkpoints",".gitignore","*.html-checkpoint.j2"]
@@ -42,6 +46,31 @@ nbconvert_styles = [".gitattributes",".ipynb_checkpoints",".gitignore","*.html-c
 [project.entry-points."nbconvert.exporters"]
     KULeuven = "nbconvert_styles:KULeuvenExporter"
 	
-# [tool.pytest.ini_options]
+[tool.pytest.ini_options]
+filterwarnings = [
+    "ignore::DeprecationWarning"
+]
 
+[tool.tox]
+legacy_tox_ini = """
+[tox]
+isolated_build = True
+envlist = py312
+
+[testenv]
+deps =
+    numpy
+    matplotlib
+    pytest
+    html5lib
+commands =
+    # Run the test suite for the custom Exporter
+    pytest
+    # Check that the command can be executed properly
+    jupyter nbconvert --to KULeuven --no-prompt --no-input "KULeuven slides test.ipynb"
+    jupyter nbconvert --to KULeuven --no-prompt --no-input "Sedes KULeuven slides test.ipynb"
+    jupyter nbconvert --to KULeuven --no-prompt --no-input "KULeuven 1425 test.ipynb"
+"""
+
+# Optional test dependencies
 # test = ["pytest","tox"]
